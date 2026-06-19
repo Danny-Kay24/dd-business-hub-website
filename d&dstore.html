@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D & D Business Hub | Premium Services, Academy & Consultation</title>
+    
+    <!-- Stylish Font Pairings: Outfit for headings, Inter for body, Caveat for elegant accents -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==============================
+           1. BASE STYLES & VARIABLES
+           ============================== */
+        :root {
+            --primary: #0a0f1d;
+            --secondary: #1e293b;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --bg-light: #f4f7fb;
+            --white: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            
+            --mtn-color: #ffcc00;
+            --at-color: #000000;
+            --telecel-color: #e20000;
+            
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.02);
+            --shadow-md: 0 12px 20px -4px rgba(0,0,0,0.08);
+            --shadow-lg: 0 25px 40px -10px rgba(59, 130, 246, 0.15);
+            
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-accent: 'Caveat', cursive;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            background-color: var(--bg-light); 
+            color: var(--text-dark); 
+            line-height: 1.7; 
+            overflow-x: hidden; 
+            font-family: var(--font-body);
+            background-image: radial-gradient(rgba(15, 23, 42, 0.06) 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
+        a { text-decoration: none; color: inherit; }
+
+        /* ==============================
+           2. GLASSMORPHISM NAVIGATION
+           ============================== */
+        header {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            position: fixed; /* Fixed to sit over the welcome page seamlessly */
+            width: 100%;
+            top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 5%; max-width: 1400px; margin: auto; }
+        .logo { font-size: 1.8rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; letter-spacing: -0.5px; }
+        .logo span { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .nav-links { list-style: none; display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { font-weight: 500; color: var(--secondary); transition: var(--transition); position: relative; font-size: 1rem; font-family: var(--font-heading); }
+        .nav-links .text-link::after { content: ''; position: absolute; width: 0; height: 3px; bottom: -6px; left: 0; background: var(--accent-gradient); transition: all 0.3s ease; border-radius: 2px; }
+        .nav-links .text-link:hover { color: var(--accent); }
+        .nav-links .text-link:hover::after { width: 100%; }
+        
+        .nav-buttons { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; justify-content: center; }
+        
+        .portal-btn {
+            background: rgba(255,255,255,0.7); color: var(--primary); padding: 0.7rem 1.5rem; border-radius: 50px; font-weight: 600;
+            border: 1px solid rgba(0,0,0,0.1); transition: var(--transition); display: flex; align-items: center; gap: 8px; font-size: 0.95rem; font-family: var(--font-heading);
+            box-shadow: var(--shadow-sm);
+        }
+        .portal-btn:hover { background: var(--white); transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--accent); color: var(--accent); }
+
+        .cart-btn {
+            background: var(--accent-gradient);
+            color: var(--white); padding: 0.7rem 1.5rem; border-radius: 50px; font-weight: 600; border: none;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3); transition: var(--transition); display: flex; align-items: center; gap: 8px; font-size: 0.95rem; font-family: var(--font-heading);
+        }
+        .cart-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 12px 25px rgba(59, 130, 246, 0.5); }
+
+        /* ==============================
+           3. WELCOME PAGE HERO
+           ============================== */
+        .welcome-hero {
+            background: linear-gradient(-45deg, #0a0f1d, #1e3a8a, #4338ca, #0f172a);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh; /* Full viewport height for welcome screen */
+            display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white); padding: 0 20px;
+            position: relative; overflow: hidden;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .welcome-hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 Q25,25 50,50 T100,50" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2"/></svg>') center/cover;
+            opacity: 0.5; z-index: 1; pointer-events: none;
+        }
+
+        .hero-content { max-width: 900px; z-index: 2; position: relative; margin-top: 40px; }
+        
+        .welcome-greeting {
+            font-family: var(--font-accent);
+            font-size: 3.5rem;
+            color: #93c5fd;
+            display: block;
+            margin-bottom: -15px;
+            transform: rotate(-3deg);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .hero-content h1 { 
+            font-size: 5.5rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.1; letter-spacing: -2px; 
+            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .hero-content h1 span { background: linear-gradient(to right, #60a5fa, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .hero-tagline { 
+            font-size: 1.3rem; color: #e2e8f0; margin-bottom: 3rem; font-weight: 300; max-width: 700px; margin-inline: auto; opacity: 0.9;
+            animation: fadeInUp 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        
+        .hero-buttons { 
+            display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; 
+            animation: fadeInUp 1.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px) rotate(-3deg); } to { opacity: 1; transform: translateY(0) rotate(-3deg); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .cta-btn {
+            background: var(--accent-gradient); color: var(--white); padding: 1.2rem 3rem; font-size: 1.1rem; font-weight: 600; font-family: var(--font-heading);
+            border-radius: 50px; transition: var(--transition); border: none; box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4); cursor: pointer; display: inline-block;
+            position: relative; overflow: hidden;
+        }
+        .cta-btn::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg); transition: all 0.7s ease;
+        }
+        .cta-btn:hover::before { left: 150%; }
+        .cta-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(59, 130, 246, 0.6); }
+        
+        .cta-secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); box-shadow: none; backdrop-filter: blur(10px); }
+        .cta-secondary:hover { background: var(--white); color: var(--primary); box-shadow: 0 15px 35px rgba(255,255,255,0.3); }
+
+        /* Scroll Down Indicator */
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            z-index: 5;
+        }
+        .scroll-down a {
+            color: rgba(255,255,255,0.6);
+            transition: color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .scroll-down a:hover { color: white; }
+        .scroll-down svg { margin-top: 5px; }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-15px) translateX(-50%); }
+            60% { transform: translateY(-7px) translateX(-50%); }
+        }
+
+        /* ==============================
+           4. SHARED TYPOGRAPHY & SECTIONS
+           ============================== */
+        .section-title { 
+            text-align: center; margin-bottom: 1rem; font-size: 3rem; font-weight: 800; letter-spacing: -1px;
+            background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 4rem; font-size: 1.2rem; max-width: 600px; margin-inline: auto; }
+        .section-container { max-width: 1400px; margin: auto; padding: 0 5%; }
+
+        /* ==============================
+           5. ABOUT SECTION
+           ============================== */
+        .about-section { margin: 7rem auto; padding-top: 3rem; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.8; }
+        .about-text strong { color: var(--primary); font-weight: 600; }
+        .about-lead { font-size: 1.4rem !important; font-weight: 600; color: var(--primary) !important; font-family: var(--font-heading); margin-bottom: 1.5rem !important; }
+        .about-visual { position: relative; }
+        .about-visual::before { 
+            content: ''; position: absolute; top: -30px; left: -30px; width: 150px; height: 150px; 
+            background: var(--accent-gradient); border-radius: 50%; opacity: 0.4; z-index: 0; filter: blur(30px); 
+        }
+        .about-visual::after { 
+            content: ''; position: absolute; bottom: -30px; right: -30px; width: 150px; height: 150px; 
+            background: linear-gradient(135deg, #10b981, #3b82f6); border-radius: 50%; opacity: 0.3; z-index: 0; filter: blur(30px); 
+        }
+        .about-image-wrapper { position: relative; z-index: 1; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid rgba(255,255,255,0.6); }
+        .about-img { width: 100%; height: auto; object-fit: cover; transition: transform 0.8s ease; display: block; }
+        .about-image-wrapper:hover .about-img { transform: scale(1.05); }
+
+        /* ==============================
+           6. SERVICES SECTION
+           ============================== */
+        .services-section { margin: 7rem auto; }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+        .service-card {
+            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(15px); border-radius: var(--radius-lg); text-align: center;
+            box-shadow: var(--shadow-md); transition: var(--transition); border: 1px solid rgba(255,255,255,0.5); position: relative; overflow: hidden;
+            display: flex; flex-direction: column; z-index: 1;
+        }
+        .service-card::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 5px;
+            background: var(--accent-gradient); transform: scaleX(0); transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1); transform-origin: right; z-index: 10;
+        }
+        .service-card:hover { transform: translateY(-15px); box-shadow: var(--shadow-lg); border-color: rgba(59, 130, 246, 0.3); }
+        .service-card:hover::after { transform: scaleX(1); transform-origin: left; }
+        
+        .service-img-wrapper { overflow: hidden; width: 100%; height: 220px; position: relative; }
+        .service-img-wrapper::after { content: ''; position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1)); }
+        .service-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+        .service-card:hover .service-img { transform: scale(1.1) rotate(2deg); }
+        
+        .service-content { padding: 2.5rem 2rem; flex-grow: 1; display: flex; flex-direction: column; background: white; border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+        .service-title { color: var(--primary); font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; }
+        .service-desc { color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
+
+        /* ==============================
+           7. DATA BUNDLE STORE SECTION
+           ============================== */
+        .data-section { background-color: var(--white); padding: 7rem 0; border-radius: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.03); margin-top: 2rem; }
+        .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+        .data-card { 
+            border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); 
+            transition: var(--transition); cursor: pointer; position: relative; border: 1px solid #e2e8f0;
+            background: var(--white);
+        }
+        .data-card:hover { transform: translateY(-15px); box-shadow: var(--shadow-lg); }
+        .data-img { width: 100%; height: 220px; object-fit: cover; transition: all 0.5s ease; }
+        .data-card:hover .data-img { filter: brightness(1.1) saturate(1.2) !important; transform: scale(1.05); }
+        .data-info { padding: 2rem; text-align: center; }
+        .data-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
+        
+        .mtn-theme .data-title { color: #d4a000; }
+        .at-theme .data-title { color: #111; }
+        .telecel-theme .data-title { color: #e20000; }
+        
+        .delivery-badge { 
+            display: inline-block; background: #fee2e2; color: #ef4444; padding: 6px 16px; 
+            border-radius: 30px; font-size: 0.85rem; font-weight: 700; margin-top: 15px; border: 1px solid rgba(239, 68, 68, 0.2);
+            font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        /* ==============================
+           8. DIGITAL PRODUCTS SECTION
+           ============================== */
+        .products-section { margin: 7rem auto; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; }
+        .product-card { background: rgba(255,255,255,0.9); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); transition: var(--transition); display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.6); backdrop-filter: blur(10px); }
+        .product-card:hover { transform: translateY(-12px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
+        .product-img-wrapper { overflow: hidden; position: relative; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+        .product-img { width: 100%; height: 240px; object-fit: cover; transition: transform 0.6s ease; }
+        .product-card:hover .product-img { transform: scale(1.08); }
+        .badge { position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 6px 16px; border-radius: 30px; font-size: 0.85rem; font-weight: 700; z-index: 2; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3); font-family: var(--font-heading); }
+        
+        .product-info { padding: 2rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .product-category { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 700; font-family: var(--font-heading); }
+        .product-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary); line-height: 1.3; }
+        .product-price { color: var(--text-dark); font-size: 1.8rem; font-weight: 800; margin-bottom: 1.5rem; font-family: var(--font-heading); }
+        
+        .add-to-cart { 
+            background-color: var(--bg-light); color: var(--primary); border: 2px solid #e2e8f0; padding: 1rem; font-size: 1rem; font-weight: 700; 
+            cursor: pointer; border-radius: 12px; transition: var(--transition); width: 100%; margin-top: auto; font-family: var(--font-heading);
+        }
+        .add-to-cart:hover { background: var(--accent-gradient); color: var(--white); border-color: transparent; box-shadow: 0 8px 15px rgba(59, 130, 246, 0.3); transform: translateY(-2px); }
+
+        /* ==============================
+           9. ACADEMIC & RESEARCH SECTION
+           ============================== */
+        .academic-section { background-color: var(--primary); color: white; padding: 7rem 0; border-radius: 40px; position: relative; overflow: hidden; margin-bottom: 4rem; }
+        .academic-section::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%); }
+        .academic-section .section-title { background: none; -webkit-text-fill-color: white; color: white; }
+        .academic-section .section-subtitle { color: #cbd5e1; }
+        
+        .academic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; margin-bottom: 4rem; position: relative; z-index: 2; }
+        .academic-card { 
+            background: rgba(255,255,255,0.05); padding: 2.5rem; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.1); 
+            transition: var(--transition); text-align: left; backdrop-filter: blur(10px); 
+        }
+        .academic-card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.1); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .academic-icon { font-size: 3rem; margin-bottom: 1.5rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .academic-title { font-size: 1.4rem; font-weight: 700; color: white; margin-bottom: 1rem; font-family: var(--font-heading); }
+        .academic-desc { font-size: 1rem; color: #94a3b8; line-height: 1.7; }
+
+        /* ==============================
+           10. FOOTER
+           ============================== */
+        footer { background-color: #05080f; color: #f1f5f9; text-align: center; padding: 5rem 5% 3rem; position: relative; }
+        .footer-content { max-width: 800px; margin: auto; }
+        .footer-logo { font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--white); font-family: var(--font-heading); letter-spacing: -1px; }
+        .footer-logo span { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .footer-details { font-size: 1.1rem; line-height: 2.2; margin-bottom: 2.5rem; color: #94a3b8; }
+        .footer-details strong { color: var(--white); font-weight: 600; }
+        .copyright { font-size: 0.95rem; color: #475569; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2.5rem; margin-top: 2rem; font-family: var(--font-heading); }
+
+        /* ==============================
+           11. MODALS
+           ============================== */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(10, 15, 29, 0.8); backdrop-filter: blur(8px); align-items: center; justify-content: center; }
+        .modal-content { 
+            background-color: var(--white); padding: 3rem; border-radius: 30px; width: 90%; max-width: 550px; position: relative; 
+            text-align: center; box-shadow: 0 30px 60px rgba(0,0,0,0.3); animation: modalFadeIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            max-height: 90vh; overflow-y: auto; border: 1px solid rgba(255,255,255,0.5);
+        }
+        @keyframes modalFadeIn { from { opacity: 0; transform: translateY(60px) scale(0.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .close-modal { position: absolute; top: 20px; right: 25px; font-size: 2.5rem; color: #94a3b8; cursor: pointer; transition: color 0.3s; line-height: 1; font-weight: 300; }
+        .close-modal:hover { color: #ef4444; transform: rotate(90deg); }
+        
+        .modal h2 { color: var(--primary); font-weight: 800; margin-bottom: 1.5rem; font-size: 2rem; letter-spacing: -0.5px; }
+        
+        .form-group { margin-bottom: 1.5rem; text-align: left; }
+        .form-group label { display: block; font-size: 0.95rem; color: var(--secondary); margin-bottom: 8px; font-weight: 600; font-family: var(--font-heading); }
+        .form-control { 
+            width: 100%; padding: 1rem 1.2rem; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; 
+            transition: var(--transition); background-color: #f8fafc; font-family: var(--font-body); color: var(--text-dark);
+        }
+        .form-control:focus { outline: none; border-color: var(--accent); background-color: var(--white); box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); }
+        textarea.form-control { resize: vertical; min-height: 120px; }
+        
+        .modal-actions { display: flex; gap: 15px; flex-direction: column; margin-top: 2rem; }
+        .confirm-btn { 
+            background: var(--primary); color: white; border: none; padding: 1.2rem; font-size: 1.1rem; font-weight: 700; font-family: var(--font-heading);
+            border-radius: 12px; cursor: pointer; transition: var(--transition); width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .confirm-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+        .confirm-btn.success { background: linear-gradient(135deg, #10b981, #059669); }
+        .confirm-btn.success:hover { box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3); }
+        .confirm-btn.paystack { background: linear-gradient(135deg, #0ba4db, #08779e); color: white; }
+        .confirm-btn.paystack:hover { box-shadow: 0 10px 20px rgba(11, 164, 219, 0.3); }
+        .clear-btn { background-color: transparent; color: #ef4444; border: 2px solid #ef4444; padding: 1rem; font-size: 1rem; font-weight: 700; border-radius: 12px; cursor: pointer; transition: var(--transition); font-family: var(--font-heading); }
+        .clear-btn:hover { background-color: #ef4444; color: white; box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3); }
+        
+        /* Modal Info Blocks */
+        .info-block { background-color: #f1f5f9; padding: 1.5rem; border-radius: 16px; margin-bottom: 1.5rem; text-align: left; border: 1px dashed #cbd5e1; font-size: 0.95rem; }
+        .price-display { font-size: 2.5rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; text-align: center; margin: 1.5rem 0; font-family: var(--font-heading); }
+
+        @media (max-width: 900px) {
+            .navbar { flex-direction: column; padding: 1.5rem; gap: 1.5rem; }
+            .nav-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+            .nav-buttons { flex-direction: row; width: 100%; }
+            .hero-content h1 { font-size: 3.5rem; }
+            .section-title { font-size: 2.2rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .about-section .section-title { text-align: center !important; }
+            .about-lead { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-nav">
+        <nav class="navbar">
+            <a href="#" class="logo">D&D <span>Hub</span></a>
+            <ul class="nav-links">
+                <li><a href="#welcome" class="text-link">Welcome</a></li>
+                <li><a href="#about" class="text-link">About</a></li>
+                <li><a href="#services" class="text-link">Services</a></li>
+                <li><a href="#data" class="text-link">Data</a></li>
+                <li><a href="#courses" class="text-link">Academy</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="#" class="portal-btn" id="open-cert-nav-btn">🏆 Certificate</a>
+                <a href="#" class="portal-btn" id="open-portal-btn">🎓 Portal</a>
+                <a href="#" class="cart-btn" id="cart-btn">🛒 Cart (<span id="cart-count">0</span>)</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- FULL SCREEN WELCOME PAGE / HERO -->
+    <section id="welcome" class="welcome-hero">
+        <div class="hero-content">
+            <span class="welcome-greeting">Welcome to</span>
+            <h1>D&D <span>Business Hub</span></h1>
+            <p class="hero-tagline">Experience ultra-fast data connectivity, elite digital academy courses, and professional academic support engineered for your ultimate success.</p>
+            <div class="hero-buttons">
+                <a href="#about" class="cta-btn cta-secondary">Discover More</a>
+                <a href="#courses" class="cta-btn">Enter Digital Academy</a>
+            </div>
+        </div>
+        
+        <!-- Animated Scroll Down Arrow -->
+        <div class="scroll-down">
+            <a href="#about">
+                Scroll Down
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about-section section-container">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2 class="section-title" style="text-align: left;">Who We Are</h2>
+                <p class="about-lead">Empowering brands, connecting people, and advancing research.</p>
+                <p><strong>D & D Business Hub</strong> is a premier digital solutions and academic support agency dedicated to elevating your business and educational capabilities. We bridge the gap between innovation and excellence by offering a comprehensive suite of professional services.</p>
+                <p>From crafting captivating <strong>Graphics</strong> and building robust <strong>Web Applications</strong>, to executing data-driven <strong>Social Media Management</strong> and providing strategic <strong>Business Consultancy & Auditing</strong>, our expert team is equipped to scale your vision.</p> 
+                <p>Furthermore, we empower individuals through our premium <strong>Digital Academy</strong>, provide seamless connectivity via our affordable <strong>Data Bundle Portal</strong>, and offer elite <strong>Academic & Research Assistance</strong> for your postgraduate journey.</p>
+                <p>At D & D Business Hub, your growth is our ultimate metric.</p>
+            </div>
+            <div class="about-visual">
+                <div class="about-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="D&D Business Hub Team" class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFESSIONAL SERVICES SECTION -->
+    <section id="services" class="services-section section-container">
+        <h2 class="section-title">Professional Expertise</h2>
+        <p class="section-subtitle">Comprehensive premium solutions designed to scale, manage, and protect your digital footprint.</p>
+        
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Graphics Design" class="service-img">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Graphics Design</h3>
+                    <p class="service-desc">Creative, high-impact visual designs to make your brand stand out and capture your audience's attention.</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Web Design" class="service-img">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Web Design</h3>
+                    <p class="service-desc">Stunning, user-friendly interfaces tailored specifically to your audience to ensure high engagement.</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Web Development" class="service-img">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Web Development</h3>
+                    <p class="service-desc">Robust, secure, and scalable web applications built from the ground up with modern technologies.</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Business Consultancy" class="service-img">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Business Consultancy</h3>
+                    <p class="service-desc">Expert strategies, market analysis, and actionable insights to accelerate your revenue and growth.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Social Media Management" class="service-img">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Social Media Management</h3>
+                    <p class="service-desc">Strategic content creation, community engagement, and data-driven campaigns to grow your audience and build brand loyalty.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Auditing Services" class="service-img">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Auditing</h3>
+                    <p class="service-desc">Comprehensive financial and operational auditing to ensure compliance, identify risks, and optimize your business processes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DATA BUNDLE PORTAL -->
+    <section id="data" class="data-section section-container">
+        <h2 class="section-title">Data Bundle Portal</h2>
+        <p class="section-subtitle">Stay connected with our affordable, high-speed internet packages tailored for uninterrupted workflow.</p>
+        
+        <div class="data-grid">
+            <div class="data-card mtn-theme" onclick="openDataModal('MTN')">
+                <img src="https://images.unsplash.com/photo-1544256718-3bcf237f3974?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="MTN Data Bundles" class="data-img" style="filter: sepia(100%) hue-rotate(10deg) saturate(300%);">
+                <div class="data-info">
+                    <h3 class="data-title">MTN Packages</h3>
+                    <p class="data-desc">1 GB up to 100 GB available</p>
+                    <span class="delivery-badge">⚡ Delivery in 15-25 Mins</span>
+                </div>
+            </div>
+
+            <div class="data-card at-theme" onclick="openDataModal('AT')">
+                <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="AT Data Bundles" class="data-img" style="filter: grayscale(100%);">
+                <div class="data-info">
+                    <h3 class="data-title">AT Packages</h3>
+                    <p class="data-desc">1 GB up to 100 GB available</p>
+                    <span class="delivery-badge">⚡ Delivery in 15-25 Mins</span>
+                </div>
+            </div>
+
+            <div class="data-card telecel-theme" onclick="openDataModal('Telecel')">
+                <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Telecel Data Bundles" class="data-img" style="filter: sepia(100%) hue-rotate(320deg) saturate(300%);">
+                <div class="data-info">
+                    <h3 class="data-title">Telecel Packages</h3>
+                    <p class="data-desc">5 GB up to 50 GB available</p>
+                    <span class="delivery-badge">⚡ Delivery in 15-25 Mins</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIGITAL ACADEMY -->
+    <section id="courses" class="products-section section-container">
+        <h2 class="section-title">Digital Academy</h2>
+        <p class="section-subtitle">Level up your skills with our premium digital resources. Earn your stylish certificate upon course completion!</p>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    <span class="badge">🔥 Bestseller</span>
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Web Development Course" class="product-img">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Video Course</span>
+                    <h3 class="product-title">Mastering Modern Web Development</h3>
+                    <p class="product-price">GH₵ 100.00</p>
+                    <button class="add-to-cart" data-price="100.00">Add to Enrollment</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Graphic Design Course" class="product-img">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Video Course</span>
+                    <h3 class="product-title">Brand Identity & Graphic Design</h3>
+                    <p class="product-price">GH₵ 50.00</p>
+                    <button class="add-to-cart" data-price="50.00">Add to Enrollment</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Microsoft Excel Course" class="product-img">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Video Course</span>
+                    <h3 class="product-title">Microsoft Excel Mastery</h3>
+                    <p class="product-price">GH₵ 50.00</p>
+                    <button class="add-to-cart" data-price="50.00">Add to Enrollment</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="MS Word Suite Course" class="product-img">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Video Course</span>
+                    <h3 class="product-title">MS Word Suite Complete</h3>
+                    <p class="product-price">GH₵ 50.00</p>
+                    <button class="add-to-cart" data-price="50.00">Add to Enrollment</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="PowerPoint Course" class="product-img">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Video Course</span>
+                    <h3 class="product-title">PowerPoint Presentations</h3>
+                    <p class="product-price">GH₵ 50.00</p>
+                    <button class="add-to-cart" data-price="50.00">Add to Enrollment</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-wrapper" style="text-align: center; margin-top: 4rem;">
+            <button class="cta-btn" onclick="document.getElementById('cert-modal').style.display='flex';" style="background: linear-gradient(135deg, #f59e0b, #ea580c); box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);">
+                🏅 Request Official Certificate (GHS 20.00)
+            </button>
+        </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="academic" class="academic-section">
+        <div class="section-container">
+            <h2 class="section-title">Academic & Research Assistance</h2>
+            <p class="section-subtitle">Elite professional support tailored for your academic and postgraduate journey.</p>
+            
+            <div class="academic-grid">
+                <div class="academic-card">
+                    <div class="academic-icon">🎓</div>
+                    <h3 class="academic-title">Dissertation & Thesis</h3>
+                    <p class="academic-desc">Comprehensive assistance with structuring, drafting, and refining your doctoral dissertation or master's thesis to meet the highest academic standards.</p>
+                </div>
+                <div class="academic-card">
+                    <div class="academic-icon">📊</div>
+                    <h3 class="academic-title">Data Collection & Analysis</h3>
+                    <p class="academic-desc">Expert help in designing robust methodologies, gathering accurate data, and performing qualitative or quantitative analysis using modern software.</p>
+                </div>
+            </div>
+            <div class="cta-wrapper" style="text-align: center;">
+                <button class="cta-btn" onclick="document.getElementById('academic-modal').style.display='flex';" style="background: white; color: var(--primary);">Book a Research Assistant</button>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-logo">D&D <span>Hub</span></div>
+            <p class="footer-details">
+                📍 Prestea-Huni Valley District, Western Region, Ghana <br>
+                ✉️ <strong>dd.business@outlook.com</strong>[cite: 1] <br>
+                📞 <strong>0246092275</strong> / <strong>0597956132</strong>[cite: 1]
+            </p>
+            <div class="copyright">
+                &copy; 2026 D & D Business Hub. Designed for Excellence. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- CERTIFICATE REQUEST MODAL -->
+    <div id="cert-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="document.getElementById('cert-modal').style.display='none'">&times;</span>
+            <h2>Course Certification</h2>
+            <div class="info-block">
+                <p>Request your official digital certificate after successfully completing your course and passing the final exams.</p>
+                <p style="margin-top: 15px; font-size: 1.2rem; font-family: var(--font-heading);"><strong>Certification Fee:</strong> <span style="color: #2563eb;">GH₵ 20.00</span></p>
+            </div>
+            <div class="form-group">
+                <label>Full Name (As it should appear on Certificate)</label>
+                <input type="text" id="cert-name" class="form-control" placeholder="E.g. Daniel Anokye">
+            </div>
+            <div class="form-group">
+                <label>Email Address (For Delivery)</label>
+                <input type="email" id="cert-email" class="form-control" placeholder="student@domain.com">
+            </div>
+            <div class="form-group">
+                <label>Course Completed</label>
+                <select id="cert-course" class="form-control">
+                    <option value="" disabled selected>Select Course...</option>
+                    <option value="Mastering Modern Web Development">Mastering Modern Web Development</option>
+                    <option value="Brand Identity & Graphic Design">Brand Identity & Graphic Design</option>
+                    <option value="Microsoft Excel Mastery">Microsoft Excel Mastery</option>
+                    <option value="MS Word Suite Complete">MS Word Suite Complete</option>
+                    <option value="PowerPoint Presentations">PowerPoint Presentations</option>
+                </select>
+            </div>
+            <div class="modal-actions">
+                <button class="confirm-btn paystack" id="paystack-cert-btn">
+                    <span>🔒</span> Pay GH₵ 20.00 with Paystack
+                </button>
+                <button class="confirm-btn success" id="whatsapp-cert-btn">
+                    <span>📱</span> Request via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DATA BUNDLE MODAL -->
+    <div id="data-purchase-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="document.getElementById('data-purchase-modal').style.display='none'">&times;</span>
+            <h2><span id="data-network-title"></span> Purchase</h2>
+            
+            <div class="info-block">
+                <p><strong>⚡ Delivery Guarantee:</strong> Within 15-25 Minutes</p>
+            </div>
+
+            <div class="form-group">
+                <label>Select Data Package</label>
+                <select id="data-package-select" class="form-control">
+                    <!-- Populated via JavaScript -->
+                </select>
+            </div>
+
+            <div class="price-display">
+                GH₵ <span id="data-price-display">0.00</span>
+            </div>
+
+            <div class="form-group">
+                <label>Recipient Phone Number</label>
+                <input type="tel" id="data-phone" class="form-control" placeholder="E.g. 0541234567">
+            </div>
+
+            <div class="form-group">
+                <label>Your Email Address (For Receipt)</label>
+                <input type="email" id="data-email" class="form-control" placeholder="buyer@domain.com">
+            </div>
+
+            <div class="modal-actions">
+                <button class="confirm-btn paystack" id="paystack-data-btn">
+                    <span>🔒</span> Buy Now with Paystack
+                </button>
+                <button class="confirm-btn success" id="whatsapp-data-btn">
+                    <span>📱</span> Order via WhatsApp instead
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- COURSE CHECKOUT MODAL -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-payment">&times;</span>
+            <h2>Course Checkout</h2>
+            <div class="info-block">
+                <p>Selected Courses: <strong id="modal-items-count" style="color: var(--primary);">0</strong></p>
+                <p style="margin-top: 10px; font-size: 1.2rem;">Total Investment: <strong style="color: #2563eb;">GH₵ <span id="modal-total-price">0.00</span></strong></p>
+            </div>
+            <div class="form-group"><label>Full Name</label><input type="text" id="checkout-name" class="form-control"></div>
+            <div class="form-group"><label>Email Address</label><input type="email" id="checkout-email" class="form-control"></div>
+            <div class="modal-actions">
+                <button class="confirm-btn paystack" id="paystack-course-btn"><span>🔒</span> Pay Securely with Paystack</button>
+                <button class="clear-btn" id="clear-cart-btn">Empty Cart</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ACADEMIC MODAL -->
+    <div id="academic-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="document.getElementById('academic-modal').style.display='none'">&times;</span>
+            <h2>Book an Academic Assistant</h2>
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="acad-name" class="form-control" placeholder="E.g. Dr. Kwame Mensah">
+            </div>
+            <div class="form-group">
+                <label>Service Required</label>
+                <select id="acad-service" class="form-control">
+                    <option value="" disabled selected>Select an option...</option>
+                    <option value="Doctoral Dissertation">Doctoral Dissertation</option>
+                    <option value="Master's Thesis">Master's Thesis</option>
+                    <option value="Data Collection & Analysis">Data Collection & Analysis</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Project Details / Topic</label>
+                <textarea id="acad-details" class="form-control" placeholder="Provide a brief summary of your research..."></textarea>
+            </div>
+            <div class="modal-actions">
+                <button class="confirm-btn success" id="submit-academic-btn">
+                    <span>📱</span> Submit Inquiry via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
+    <script>
+        const companyPhone = "233597956132";
+
+        // --- CERTIFICATE MODAL LOGIC ---
+        document.getElementById('open-cert-nav-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('cert-modal').style.display = 'flex';
+        });
+
+        document.getElementById('whatsapp-cert-btn').addEventListener('click', () => {
+            const name = document.getElementById('cert-name').value.trim();
+            const email = document.getElementById('cert-email').value.trim();
+            const course = document.getElementById('cert-course').value;
+            
+            if(!name || !email || !course) return alert("Please fill out all fields.");
+            
+            const msg = `*CERTIFICATE REQUEST*\n\n*Name on Certificate:* ${name}\n*Email:* ${email}\n*Course Completed:* ${course}\n\n_I have completed the exams and would like to pay the GHS 20.00 fee via MoMo for my certificate._`;
+            window.open(`https://wa.me/${companyPhone}?text=${encodeURIComponent(msg)}`, '_blank');
+        });
+
+        document.getElementById('paystack-cert-btn').addEventListener('click', () => {
+            const name = document.getElementById('cert-name').value.trim();
+            const email = document.getElementById('cert-email').value.trim();
+            const course = document.getElementById('cert-course').value;
+
+            if(!name || !email || !course) return alert("Please fill out all fields.");
+
+            let handler = PaystackPop.setup({
+                key: 'pk_test_5d6e1b7a49f7f5ae6a161b8be4e0148f64367c9a',
+                email: email,
+                amount: 2000, 
+                currency: 'GHS',
+                ref: 'DD_CERT_' + Math.floor((Math.random() * 1000000000) + 1),
+                metadata: {
+                    custom_fields: [
+                        { display_name: "Student Name", variable_name: "student_name", value: name },
+                        { display_name: "Course", variable_name: "course", value: course }
+                    ]
+                },
+                callback: function(response) {
+                    alert('Payment Successful! Reference: ' + response.reference + '\nWe will verify your exam results and email your stylish certificate within 24 hours.');
+                    document.getElementById('cert-modal').style.display = 'none';
+                    document.getElementById('cert-name').value = '';
+                    document.getElementById('cert-email').value = '';
+                    document.getElementById('cert-course').value = '';
+                },
+                onClose: function() { alert('Transaction cancelled.'); }
+            });
+            handler.openIframe();
+        });
+
+
+        // --- DATA BUNDLE PRICING LOGIC ---
+        const bundleData = {
+            'MTN': [
+                { size: '1 GB', price: 7 }, { size: '2 GB', price: 13 }, { size: '3 GB', price: 17 }, { size: '4 GB', price: 24 },
+                { size: '5 GB', price: 28 }, { size: '6 GB', price: 33 }, { size: '8 GB', price: 41 }, { size: '10 GB', price: 48 },
+                { size: '15 GB', price: 72 }, { size: '20 GB', price: 96 }, { size: '25 GB', price: 120 }, { size: '30 GB', price: 145 },
+                { size: '40 GB', price: 180 }, { size: '50 GB', price: 250 }, { size: '100 GB', price: 490 }
+            ],
+            'AT': [
+                { size: '1 GB', price: 6 }, { size: '2 GB', price: 10 }, { size: '3 GB', price: 15 }, { size: '4 GB', price: 19 },
+                { size: '5 GB', price: 24 }, { size: '6 GB', price: 27 }, { size: '7 GB', price: 32 }, { size: '8 GB', price: 36 },
+                { size: '10 GB', price: 46 }, { size: '15 GB', price: 60 }, { size: '20 GB', price: 86 }, { size: '25 GB', price: 105 },
+                { size: '30 GB', price: 125 }, { size: '40 GB', price: 190 }, { size: '50 GB', price: 220 }, { size: '100 GB', price: 420 }
+            ],
+            'Telecel': [
+                { size: '5 GB', price: 25 }, { size: '10 GB', price: 48 }, { size: '15 GB', price: 75 }, { size: '20 GB', price: 96 },
+                { size: '25 GB', price: 110 }, { size: '30 GB', price: 130 }, { size: '40 GB', price: 180 }, { size: '45 GB', price: 190 },
+                { size: '50 GB', price: 230 }
+            ]
+        };
+
+        let currentNetwork = '';
+        let currentDataPrice = 0;
+
+        function openDataModal(network) {
+            currentNetwork = network;
+            document.getElementById('data-network-title').innerText = network;
+            
+            const selectEl = document.getElementById('data-package-select');
+            selectEl.innerHTML = '<option value="" disabled selected>Select a package...</option>';
+            
+            bundleData[network].forEach((bundle, index) => {
+                let opt = document.createElement('option');
+                opt.value = index;
+                opt.innerText = `${bundle.size} - GHS ${bundle.price}`;
+                selectEl.appendChild(opt);
+            });
+            
+            document.getElementById('data-price-display').innerText = '0.00';
+            document.getElementById('data-purchase-modal').style.display = 'flex';
+        }
+
+        document.getElementById('data-package-select').addEventListener('change', function(e) {
+            const selectedIndex = e.target.value;
+            currentDataPrice = bundleData[currentNetwork][selectedIndex].price;
+            document.getElementById('data-price-display').innerText = currentDataPrice.toFixed(2);
+        });
+
+        document.getElementById('whatsapp-data-btn').addEventListener('click', () => {
+            const packageIndex = document.getElementById('data-package-select').value;
+            const phone = document.getElementById('data-phone').value.trim();
+            
+            if(!packageIndex || !phone) return alert("Please select a package and enter the recipient phone number.");
+            
+            const bundle = bundleData[currentNetwork][packageIndex];
+            const msg = `*NEW DATA ORDER*\n\n*Network:* ${currentNetwork}\n*Package:* ${bundle.size}\n*Price:* GHS ${bundle.price}\n*Recipient Phone:* ${phone}\n\n_I will make payment to the MoMo number._`;
+            window.open(`https://wa.me/${companyPhone}?text=${encodeURIComponent(msg)}`, '_blank');
+        });
+
+        document.getElementById('paystack-data-btn').addEventListener('click', () => {
+            const packageIndex = document.getElementById('data-package-select').value;
+            const phone = document.getElementById('data-phone').value.trim();
+            const email = document.getElementById('data-email').value.trim();
+
+            if (!packageIndex || !phone || !email) return alert("Please fill out all fields.");
+            
+            const bundle = bundleData[currentNetwork][packageIndex];
+
+            let handler = PaystackPop.setup({
+                key: 'pk_test_5d6e1b7a49f7f5ae6a161b8be4e0148f64367c9a',
+                email: email,
+                amount: Math.round(bundle.price * 100), 
+                currency: 'GHS',
+                ref: 'DD_DATA_' + Math.floor((Math.random() * 1000000000) + 1),
+                metadata: {
+                    custom_fields: [
+                        { display_name: "Phone Number", variable_name: "phone_number", value: phone },
+                        { display_name: "Network", variable_name: "network", value: currentNetwork },
+                        { display_name: "Bundle Size", variable_name: "bundle", value: bundle.size }
+                    ]
+                },
+                callback: function(response) {
+                    alert('Payment Successful! Reference: ' + response.reference + '\nYour data will be delivered to ' + phone + ' within 15-25 minutes.');
+                    document.getElementById('data-purchase-modal').style.display = 'none';
+                    document.getElementById('data-phone').value = '';
+                    document.getElementById('data-email').value = '';
+                },
+                onClose: function() { alert('Transaction cancelled.'); }
+            });
+            handler.openIframe();
+        });
+
+        document.getElementById('submit-academic-btn').addEventListener('click', () => {
+            const name = document.getElementById('acad-name').value.trim();
+            const service = document.getElementById('acad-service').value;
+            const details = document.getElementById('acad-details').value.trim();
+            
+            if (!name || !service || !details) return alert("Please fill all fields.");
+            
+            const msg = `*ACADEMIC ASSISTANCE BOOKING*\n\n*Name:* ${name}\n*Service:* ${service}\n*Details:*\n${details}`;
+            window.open(`https://wa.me/${companyPhone}?text=${encodeURIComponent(msg)}`, '_blank');
+            document.getElementById('academic-modal').style.display = "none";
+        });
+
+        // --- ACADEMY CART LOGIC ---
+        document.addEventListener("DOMContentLoaded", () => {
+            let cartItemCount = parseInt(localStorage.getItem('dd_cartCount')) || 0;
+            let cartTotalPrice = parseFloat(localStorage.getItem('dd_cartTotal')) || 0.00;
+            const cartCountNav = document.getElementById('cart-count');
+            cartCountNav.innerText = cartItemCount;
+
+            function updateStorage() {
+                localStorage.setItem('dd_cartCount', cartItemCount);
+                localStorage.setItem('dd_cartTotal', cartTotalPrice.toFixed(2));
+                cartCountNav.innerText = cartItemCount;
+            }
+
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    cartItemCount++;
+                    cartTotalPrice += parseFloat(e.target.getAttribute('data-price'));
+                    updateStorage();
+                    const originalText = e.target.innerText;
+                    e.target.innerHTML = "✓ Enrolled";
+                    e.target.style.background = "linear-gradient(135deg, #10b981, #059669)"; e.target.style.color = "#fff";
+                    setTimeout(() => { e.target.innerText = originalText; e.target.style.background = ""; e.target.style.color = ""; }, 1000);
+                });
+            });
+
+            document.getElementById('cart-btn').addEventListener('click', (e) => {
+                e.preventDefault(); 
+                if (cartItemCount === 0) return alert("Your enrollment list is empty.");
+                document.getElementById('modal-items-count').innerText = cartItemCount;
+                document.getElementById('modal-total-price').innerText = cartTotalPrice.toFixed(2);
+                document.getElementById('payment-modal').style.display = "flex";
+            });
+
+            document.getElementById('close-payment').addEventListener('click', () => { 
+                document.getElementById('payment-modal').style.display = "none"; 
+            });
+
+            document.getElementById('clear-cart-btn').addEventListener('click', () => {
+                cartItemCount = 0; cartTotalPrice = 0.00; updateStorage(); document.getElementById('payment-modal').style.display = "none"; alert("Cart cleared.");
+            });
+
+            document.getElementById('paystack-course-btn').addEventListener('click', () => {
+                const sName = document.getElementById('checkout-name').value.trim();
+                const sEmail = document.getElementById('checkout-email').value.trim();
+
+                if (!sName || !sEmail) return alert("Please fill out your Name and Email.");
+
+                let handler = PaystackPop.setup({
+                    key: 'pk_test_5d6e1b7a49f7f5ae6a161b8be4e0148f64367c9a',
+                    email: sEmail,
+                    amount: Math.round(cartTotalPrice * 100),
+                    currency: 'GHS',
+                    ref: 'DD_ACAD_' + Math.floor((Math.random() * 1000000000) + 1),
+                    callback: function(response) {
+                        alert('Payment Successful! Reference: ' + response.reference + '\nRedirecting to your Google Classroom...');
+                        cartItemCount = 0; cartTotalPrice = 0.00; updateStorage(); 
+                        window.location.href = "https://classroom.google.com/c/Nzk3ODM2NDczMDEz";
+                    },
+                    onClose: function() { alert('Transaction cancelled.'); }
+                });
+                handler.openIframe();
+            });
+        });
+    </script>
+</body>
+</html>
